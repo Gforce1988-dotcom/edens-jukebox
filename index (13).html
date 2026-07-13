@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Jukebox">
+  <title>Eden's Jukebox</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+    :root {
+      --bg: #0a0a0f;
+      --surface: #16161e;
+      --border: rgba(255,255,255,0.08);
+      --text: #ffffff;
+      --text-dim: rgba(255,255,255,0.5);
+      --accent: #1ed760;
+      --glow: rgba(30,215,96,0.35);
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      overflow: hidden;
+      touch-action: manipulation;
+    }
+
+    #app {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* LOGIN SCREEN */
+    #login-screen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .logo {
+      font-size: 4rem;
+    }
+
+    .login-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.5px;
+    }
+
+    .login-sub {
+      font-size: 1rem;
+      color: var(--text-dim);
+      margin-top: -1rem;
+    }
+
+    .spotify-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--accent);
+      color: #000;
+      border: none;
+      border-radius: 50px;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.1s, opacity 0.1s;
+      text-decoration: none;
+    }
+
+    .spotify-btn:active { transform: scale(0.96); opacity: 0.9; }
+
+    .spotify-logo { width: 24px; height: 24px; }
+
+    /* JUKEBOX SCREEN */
+    #jukebox-screen {
+      display: none;
+      width: 100%;
+      height: 100%;
+      flex-direction: column;
+    }
+
+    .grid-container {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      align-content: start;
+    }
+
+    @media (min-width: 500px) {
+      .grid-container { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (min-width: 700px) {
+      .grid-container {
+        grid-template-columns: repeat(4, 1fr);
+        padding: 2rem;
+        gap: 1.25rem;
+      }
+    }
+
+    .song-btn {
+      position: relative;
+      aspect-ratio: 1;
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 3px solid transparent;
+      background: var(--surface);
+      transition: transform 0.15s, border-color 0.2s, box-shadow 0.2s;
+      -webkit-user-select: none;
+      user-select: none;
+      outline: none;
+    }
+
+    .song-btn:active { transform: scale(0.93); }
+
+    .song-btn.playing {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--glow), 0 8px 32px rgba(0,0,0,0.6);
+    }
+
+    .song-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+    }
+
+    .song-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 0.6rem 0.7rem;
+      background: linear-gradient(transparent, rgba(0,0,0,0.85));
+      pointer-events: none;
+    }
+
+    .song-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .song-artist {
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.65);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-top: 1px;
+    }
+
+    .playing-indicator {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      display: none;
+      gap: 2px;
+      align-items: flex-end;
+      height: 18px;
+    }
+
+    .song-btn.playing .playing-indicator { display: flex; }
+
+    .playing-indicator span {
+      display: block;
+      width: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+      animation: bounce 0.8s ease-in-out infinite;
+    }
+
+    .playing-indicator span:nth-child(1) { height: 8px; animation-delay: 0s; }
+    .playing-indicator span:nth-child(2) { height: 14px; animation-delay: 0.15s; }
+    .playing-indicator span:nth-child(3) { height: 10px; animation-delay: 0.3s; }
+    .playing-indicator span:nth-child(4) { height: 16px; animation-delay: 0.1s; }
+
+    @keyframes bounce {
+      0%, 100% { transform: scaleY(0.5); opacity: 0.7; }
+      50% { transform: scaleY(1); opacity: 1; }
+    }
+
+    /* BOTTOM BAR */
+    .now-playing-bar {
+      padding: 0.75rem 1.25rem;
+      padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+      background: rgba(22,22,30,0.95);
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      min-height: 60px;
+    }
+
+    .np-art {
+      width: 40px;
+      height: 40px;
+      border-radius: 6px;
+      object-fit: cover;
+      flex-shrink: 0;
+      background: var(--surface);
+    }
+
+    .np-info { flex: 1; min-width: 0; }
+
+    .np-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .np-artist {
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .np-idle {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+
+    .volume-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    .vol-icon { font-size: 1rem; cursor: pointer; color: var(--text-dim); }
+
+    input[type=range] {
+      -webkit-appearance: none;
+      width: 70px;
+      height: 4px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 2px;
+      outline: none;
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--text);
+      cursor: pointer;
+    }
+
+    /* LOADING / ERROR */
+    #loading-screen {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      color: var(--text-dim);
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .error-msg {
+      font-size: 0.9rem;
+      color: #ff6b6b;
+      text-align: center;
+      padding: 0 2rem;
+    }
+  </style>
+</head>
+<body>
+
+<div id="app">
+
+  <!-- No login needed for MP3 version -->
+  <div id="login-screen" style="display:none"></div>
+
+  <!-- LOADING -->
+  <div id="loading-screen">
+    <div class="spinner"></div>
+    <div>Setting up your jukebox…</div>
+  </div>
+
+  <!-- JUKEBOX -->
+  <div id="jukebox-screen">
+    <div class="grid-container" id="song-grid"></div>
+    <div class="now-playing-bar">
+      <img class="np-art" id="np-art" src="" alt="" style="display:none">
+      <div class="np-info">
+        <div class="np-idle" id="np-idle">Tap a song to play</div>
+        <div style="display:none" id="np-track">
+          <div class="np-title" id="np-title"></div>
+          <div class="np-artist" id="np-artist"></div>
+        </div>
+      </div>
+      <div class="volume-wrap">
+        <span class="vol-icon" id="vol-icon">🔊</span>
+        <input type="range" id="volume" min="0" max="100" value="80">
+      </div>
+    </div>
+  </div>
+
+</div>
+<script>
+// ── SONG LIST loaded from songs.json ──────────────────────────────────────
+let SONGS = [];
+
+// ── AUDIO ENGINE ───────────────────────────────────────────────────────────
+let audio = new Audio();
+audio.loop = true;
+let currentIndex = null;
+
+function playSong(index) {
+  const song = SONGS[index];
+  if (currentIndex === index) {
+    // Tap same song = toggle pause/play
+    if (audio.paused) { audio.play(); setPlaying(index); }
+    else { audio.pause(); setPlaying(null); }
+    return;
+  }
+
+  audio.pause();
+  audio.src = song.file;
+  audio.load();
+  audio.play().catch(e => console.warn('Playback error:', e));
+  currentIndex = index;
+  setPlaying(index);
+  setNowPlaying(song);
+}
+
+function setPlaying(index) {
+  document.querySelectorAll('.song-btn').forEach((btn, i) => {
+    btn.classList.toggle('playing', i === index);
+  });
+}
+
+audio.addEventListener('error', () => {
+  showStatus('Could not load audio file. Check it was uploaded correctly.');
+});
+
+// ── SCREENS ────────────────────────────────────────────────────────────────
+function show(name) {
+  document.getElementById('login-screen').style.display  = name === 'login'   ? 'flex' : 'none';
+  document.getElementById('loading-screen').style.display = name === 'loading' ? 'flex' : 'none';
+  document.getElementById('jukebox-screen').style.display = name === 'jukebox' ? 'flex' : 'none';
+}
+
+// ── GRID ───────────────────────────────────────────────────────────────────
+function buildGrid() {
+  const grid = document.getElementById('song-grid');
+  grid.innerHTML = '';
+  SONGS.forEach((song, index) => {
+    const btn = document.createElement('button');
+    btn.className = 'song-btn';
+    btn.innerHTML =
+      '<img src="' + song.art + '" alt="' + song.name + '" loading="lazy" onerror="this.style.display=\'none\'">' +
+      '<div class="playing-indicator" aria-hidden="true"><span></span><span></span><span></span><span></span></div>' +
+      '<div class="song-overlay"><div class="song-title">' + song.name + '</div><div class="song-artist">' + song.artist + '</div></div>';
+    btn.addEventListener('click', () => playSong(index));
+    grid.appendChild(btn);
+  });
+}
+
+// ── NOW PLAYING BAR ────────────────────────────────────────────────────────
+function setNowPlaying(song) {
+  document.getElementById('np-idle').style.display = 'none';
+  document.getElementById('np-track').style.display = 'block';
+  document.getElementById('np-title').textContent = song.name;
+  document.getElementById('np-artist').style.display = 'none';
+  const art = document.getElementById('np-art');
+  art.src = song.art;
+  art.style.display = 'block';
+}
+
+// ── VOLUME ─────────────────────────────────────────────────────────────────
+const volSlider = document.getElementById('volume');
+const volIcon   = document.getElementById('vol-icon');
+
+volSlider.addEventListener('input', () => {
+  audio.volume = volSlider.value / 100;
+  volIcon.textContent = volSlider.value == 0 ? '🔇' : volSlider.value < 50 ? '🔉' : '🔊';
+});
+
+volIcon.addEventListener('click', () => {
+  volSlider.value = volSlider.value > 0 ? 0 : 80;
+  volSlider.dispatchEvent(new Event('input'));
+});
+
+// ── STATUS TOAST ───────────────────────────────────────────────────────────
+function showStatus(msg) {
+  let el = document.getElementById('status-msg');
+  if (!el) {
+    el = document.createElement('div');
+    el.id = 'status-msg';
+    el.style.cssText = 'position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.85);color:#fff;padding:0.6rem 1.2rem;border-radius:20px;font-size:0.85rem;z-index:999;text-align:center;max-width:80vw;display:none';
+    document.body.appendChild(el);
+  }
+  el.textContent = msg;
+  el.style.display = 'block';
+  clearTimeout(el._timer);
+  el._timer = setTimeout(() => { el.style.display = 'none'; }, 4000);
+}
+
+// ── INIT ───────────────────────────────────────────────────────────────────
+fetch('songs.json?v=' + Date.now())
+  .then(r => r.json())
+  .then(data => {
+    SONGS = data;
+    buildGrid();
+    show('jukebox');
+  })
+  .catch(() => {
+    showStatus('Could not load songs.json');
+    show('jukebox');
+  });
+</script>
+</body>
+</html>
