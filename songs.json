@@ -2,5 +2,5 @@
   { "name": "Monster Hunt", "artist": "", "file": "audio/monsterhunt.mp3", "art": "art/monsterhunt.jpeg" },
   { "name": "Day-O",        "artist": "", "file": "audio/dayo.mp3",        "art": "art/dayo.jpeg"        },
   { "name": "Sick Song",    "artist": "", "file": "audio/sicksong.mp3",    "art": "art/sicksong.jpeg"    },
-  { "name": "Pete The Cat Goes Camping", "artist": "", "file": "audio/petecatcamp.mp3", "art": "art/petecatcamp.jpeg" } 
+  { "name": "Dino Stomp", "artist": "", "file": "audio/dinostomp.mp3", "art": "art/dinostomp.jpeg" } 
 ]
