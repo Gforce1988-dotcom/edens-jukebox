@@ -12,5 +12,6 @@
   { "name": "Big Spider", "artist": "", "file": "audio/bigspider.mp3", "art": "art/bigspider.jpeg" },
   { "name": "Icky Sticky Bubblegum", "artist": "", "file": "audio/gum.mp3", "art": "art/gum.jpeg" },
   { "name": "Bubble Fish", "artist": "", "file": "audio/bubblefish.mp3", "art": "art/bubblefish.jpeg" },
-  { "name": "Hunters in the Night", "artist": "", "file": "audio/hunters.mp3", "art": "art/hunters.jpeg" }
+  { "name": "Hunters in the Night", "artist": "", "file": "audio/hunters.mp3", "art": "art/hunters.jpeg" },
+  { "name": "My Classroom", "artist": "", "file": "audio/class.mp3", "art": "art/class.jpeg" }
 ]
