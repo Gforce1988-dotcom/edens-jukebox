@@ -9,5 +9,7 @@
   { "name": "Crayon?", "artist": "", "file": "audio/crayon.mp3", "art": "art/crayon.jpeg" },
   { "name": "Toodly Doodly", "artist": "", "file": "audio/toodly.mp3", "art": "art/toodly.jpeg" },
   { "name": "Ten in a Bed", "artist": "", "file": "audio/tenbed.mp3", "art": "art/tenbed.jpeg" },
-  { "name": "Big Spider", "artist": "", "file": "audio/bigspider.mp3", "art": "art/bigspider.jpeg" }
+  { "name": "Big Spider", "artist": "", "file": "audio/bigspider.mp3", "art": "art/bigspider.jpeg" },
+  { "name": "Icky Sticky Bubblegum", "artist": "", "file": "audio/gum.mp3", "art": "art/gum.jpeg" },
+  { "name": "Bubble Fish", "artist": "", "file": "audio/bubblefish.mp3", "art": "art/bubblefish.jpeg" }
 ]
