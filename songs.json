@@ -7,5 +7,6 @@
   { "name": "Zombie Hunt", "artist": "", "file": "audio/zombie.mp3", "art": "art/zombie.jpeg" },
   { "name": "Dragon Hunt", "artist": "", "file": "audio/dragon.mp3", "art": "art/dragon.jpeg" },
   { "name": "Crayon?", "artist": "", "file": "audio/crayon.mp3", "art": "art/crayon.jpeg" },
-  { "name": "Toodly Doodly", "artist": "", "file": "audio/toodly.mp3", "art": "art/toodly.jpeg" }
+  { "name": "Toodly Doodly", "artist": "", "file": "audio/toodly.mp3", "art": "art/toodly.jpeg" },
+  { "name": "Ten in a Bed", "artist": "", "file": "audio/tenbed.mp3", "art": "art/tenbed.jpeg" }
 ]
