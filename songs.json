@@ -3,5 +3,6 @@
   { "name": "Day-O",        "artist": "", "file": "audio/dayo.mp3",        "art": "art/dayo.jpeg"        },
   { "name": "Sick Song",    "artist": "", "file": "audio/sicksong.mp3",    "art": "art/sicksong.jpeg"    },
   { "name": "Dino Stomp", "artist": "", "file": "audio/dinostomp.mp3", "art": "art/dinostomp.jpeg" }, 
-  { "name": "Feelings", "artist": "", "file": "audio/feelings.mp3", "art": "art/feelings.jpeg" }
+  { "name": "Feelings", "artist": "", "file": "audio/feelings.mp3", "art": "art/feelings.jpeg" },
+  { "name": "Zombie Hunt", "artist": "", "file": "audio/zombie.mp3", "art": "art/zombie.jpeg" }
 ]
