@@ -3,5 +3,5 @@
   { "name": "Day-O",        "artist": "", "file": "audio/dayo.mp3",        "art": "art/dayo.jpeg"        },
   { "name": "Sick Song",    "artist": "", "file": "audio/sicksong.mp3",    "art": "art/sicksong.jpeg"    },
   { "name": "Dino Stomp", "artist": "", "file": "audio/dinostomp.mp3", "art": "art/dinostomp.jpeg" }, 
-  { "name": "Pete Camp", "artist": "", "file": "audio/petecatcamp.mp3", "art": "art/petecatcamp.jpeg" }
+  { "name": "Feelings", "artist": "", "file": "audio/feelings.mp3", "art": "art/feelings.jpeg" }
 ]
