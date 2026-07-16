@@ -5,6 +5,13 @@
   { "name": "", "artist": "", "file": "audio/dinostomp.mp3", "art": "art/dinostomp.png" }, 
   { "name": "", "artist": "", "file": "audio/feelings.mp3", "art": "art/feelings.png" },
   { "name": "", "artist": "", "file": "audio/zombie.mp3", "art": "art/zombie.png" },
+  { "name": "", "artist": "", "file": "audio/dinoegg.mp3", "art": "art/dinoegg.png" },
+  { "name": "", "artist": "", "file": "audio/findcat.mp3", "art": "art/findcat.png" },
+  { "name": "", "artist": "", "file": "audio/fivemonkeys.mp3", "art": "art/fivemonkeys.png" },
+  { "name": "", "artist": "", "file": "audio/hoist.mp3", "art": "art/hoist.png" },
+  { "name": "", "artist": "", "file": "audio/huntspider.mp3", "art": "art/huntspider.png" },
+  { "name": "", "artist": "", "file": "audio/wherecat.mp3", "art": "art/wherecat.png" },
+  { "name": "", "artist": "", "file": "audio/wimoweh.mp3", "art": "art/wimoweh.png" },
   { "name": "", "artist": "", "file": "audio/dragon.mp3", "art": "art/dragon.png" },
   { "name": "", "artist": "", "file": "audio/crayon.mp3", "art": "art/crayon.png" },
   { "name": "", "artist": "", "file": "audio/toodly.mp3", "art": "art/toodly.png" },
@@ -15,6 +22,7 @@
   { "name": "", "artist": "", "file": "audio/hunters.mp3", "art": "art/hunters.png" },
   { "name": "", "artist": "", "file": "audio/class.mp3", "art": "art/class.png" },
   { "name": "", "artist": "", "file": "audio/petecamp.mp3", "art": "art/petecamp.jpg" },
+  { "name": "", "artist": "", "file": "audio/petebuttons.mp3", "art": "art/petebuttons.png" },
   { "name": "", "artist": "", "file": "audio/peteshoes.mp3", "art": "art/peteshoes.png" },
   { "name": "", "artist": "", "file": "audio/peteglass.mp3", "art": "art/peteglass.png" }
 ]
