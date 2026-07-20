@@ -25,5 +25,6 @@
   { "name": "", "artist": "", "file": "audio/petecamp.mp3", "art": "art/petecamp.jpg" },
   { "name": "", "artist": "", "file": "audio/petebuttons.mp3", "art": "art/petebuttons.png" },
   { "name": "", "artist": "", "file": "audio/peteshoes.mp3", "art": "art/peteshoes.png" },
-  { "name": "", "artist": "", "file": "audio/peteglass.mp3", "art": "art/peteglass.png" }
+  { "name": "", "artist": "", "file": "audio/peteglass.mp3", "art": "art/peteglass.png" },
+  { "name": "", "artist": "", "file": "audio/debussy.mp3", "art": "art/debussy.png" }
 ]
