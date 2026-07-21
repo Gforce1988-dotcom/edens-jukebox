@@ -26,5 +26,9 @@
   { "name": "", "artist": "", "file": "audio/petebuttons.mp3", "art": "art/petebuttons.png" },
   { "name": "", "artist": "", "file": "audio/peteshoes.mp3", "art": "art/peteshoes.png" },
   { "name": "", "artist": "", "file": "audio/peteglass.mp3", "art": "art/peteglass.png" },
-  { "name": "", "artist": "", "file": "audio/peteschool.mp3", "art": "art/peteschool.png" }
+  { "name": "", "artist": "", "file": "audio/petefarm.mp3", "art": "art/petefarm.png" },
+  { "name": "", "artist": "", "file": "audio/petesuper.mp3", "art": "art/petesuper.png" },
+  { "name": "", "artist": "", "file": "audio/peteschool.mp3", "art": "art/peteschool.png" },
+  { "name": "", "artist": "", "file": "audio/watermelon.mp3", "art": "art/watermelon.png" },
+  { "name": "", "artist": "", "file": "audio/gingerman.mp3", "art": "art/gingerman.png" }
 ]
