@@ -22,6 +22,7 @@
   { "name": "", "artist": "", "file": "audio/hunters.mp3", "art": "art/hunters.png" },
   { "name": "", "artist": "", "file": "audio/class.mp3", "art": "art/class.png" },
   { "name": "", "artist": "", "file": "audio/peppaswim.mp3", "art": "art/peppaswim.png" },
+  { "name": "", "artist": "", "file": "audio/peppalesson.mp3", "art": "art/peppalesson.png" },
   { "name": "", "artist": "", "file": "audio/petecamp.mp3", "art": "art/petecamp.png" },
   { "name": "", "artist": "", "file": "audio/petebuttons.mp3", "art": "art/petebuttons.png" },
   { "name": "", "artist": "", "file": "audio/peteshoes.mp3", "art": "art/peteshoes.png" },
@@ -30,5 +31,10 @@
   { "name": "", "artist": "", "file": "audio/petesuper.mp3", "art": "art/petesuper.png" },
   { "name": "", "artist": "", "file": "audio/peteschool.mp3", "art": "art/peteschool.png" },
   { "name": "", "artist": "", "file": "audio/watermelon.mp3", "art": "art/watermelon.png" },
-  { "name": "", "artist": "", "file": "audio/gingerman.mp3", "art": "art/gingerman.png" }
+  { "name": "", "artist": "", "file": "audio/gingerman.mp3", "art": "art/gingerman.png" },
+  { "name": "", "artist": "", "file": "audio/poobum.mp3", "art": "art/poobum.png" },
+  { "name": "", "artist": "", "file": "audio/poobumbum.mp3", "art": "art/poobumbum.png" },
+  { "name": "", "artist": "", "file": "audio/poopoosong.mp3", "art": "art/poopoosong.png" },
+  { "name": "", "artist": "", "file": "audio/pushpoop.mp3", "art": "art/pushpoop.png" },
+  { "name": "", "artist": "", "file": "audio/ducksong.mp3", "art": "art/ducksong.png" }
 ]
