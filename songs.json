@@ -1,5 +1,6 @@
 [
   { "name": "", "artist": "", "file": "audio/peppaswim.mp3", "art": "art/peppaswim.png" },
+  { "name": "", "artist": "", "file": "audio/peppalost.mp3", "art": "art/peppalost.png" },
   { "name": "", "artist": "", "file": "audio/peppabed.mp3", "art": "art/peppabed.png" },
   { "name": "", "artist": "", "file": "audio/peppanoise.mp3", "art": "art/peppanoise.png" },
   { "name": "", "artist": "", "file": "audio/pepparace.mp3", "art": "art/pepparace.png" },
